@@ -31,8 +31,9 @@ AFRAME.registerComponent("bullets", {
         camera.getWorldDirection(direction);
 
         //set the velocity and it's direction
-        bullet.setAttribute("velocity", direction.multiplyScalar(-10));
+        bullet.setAttribute("velocity", direction.multiplyScalar(-20));
 
+        
         var scene = document.querySelector("#scene");
 
         //set the bullet as the dynamic entity
@@ -40,7 +41,7 @@ AFRAME.registerComponent("bullets", {
           shape: "sphere",
           mass: "0",
         });
-
+        bullet.setAttribute("visible", false);
         //add the collide event listener to the bullet
         bullet.addEventListener("collide", this.removeBullet);
 
@@ -70,9 +71,9 @@ AFRAME.registerComponent("bullets", {
       z: pos.z,
     });
     paint.setAttribute("rotation", {
-      x: pos.x,
-      y: pos.y,
-      z: pos.z,
+      x: rotation.x,
+      y: rotation.y,
+      z: rotation.z,
     });
     paint.setAttribute("scale", {
       x: 2,
@@ -99,7 +100,7 @@ AFRAME.registerComponent("bullets", {
       element.removeEventListener("collide", this.removeBullet);
 
       //remove the bullets from the scene
-      var scene = document.querySelector("#scene");
+      
       scene.removeChild(element);
     },
     
