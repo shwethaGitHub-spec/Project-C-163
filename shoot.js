@@ -52,6 +52,7 @@ AFRAME.registerComponent("bullets", {
     });
   },
   removeBullet: function (e) {
+    var scene = document.querySelector("#scene");
     //bullet element
     var element = e.detail.target.el;
 
